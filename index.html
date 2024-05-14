@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7D0A0A;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #BF3131;
+            border-radius: 5px;
+            background-color: #BF3131;
+        }
+
+        h1 ,p{
+            text-align: center;
+            color:#EAD196;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #EAD196;
+            background-color: #F3EDC8;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100px; 
+            height: 50px; 
+            margin: auto;
+            padding: 15px; 
+            border: 2px solid #7D0A0A;
+            border-radius: 5px;
+            background-color: #7D0A0A;
+            color: #EAD196;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button:hover{
+            background-color: #EAD196;
+            color:#7D0A0A
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            background-color: #EAD196;
+        }
+
+        li {
+            background-color: #EAD196;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 2px solid #060606;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #7D0A0A;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>To-Do List</h1>
+    <p>(click on the task once done)</p>
+    <input type="text" id="taskInput" placeholder="Enter a task here.....">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+    function addTask() {
+        var taskInput = document.getElementById("taskInput");
+        var taskList = document.getElementById("taskList");
+
+        if (taskInput.value.trim() === "") {
+            alert("Enter a task!");
+            return;
+        }
+
+        var li = document.createElement("li");
+        li.textContent = taskInput.value;
+        li.onclick = function() {
+            li.remove();
+        };
+
+        taskList.appendChild(li);
+
+        taskInput.value = "";
+    }
+</script>
+
+</body>
+</html>
